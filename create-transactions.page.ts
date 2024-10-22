@@ -31,12 +31,27 @@ export class CreateTransactionPage {
     await this.page.locator('button[name="nextButton"]').click();
   }
 
+  async selectBuyerCrypto() {
+    await this.page.locator('input[value="buyer_crypto"]').check();
+    await this.page.waitForLoadState('networkidle');
+    await this.page.locator('button[name="nextButton"]').click();
+  }
+
 
   async fillTransactionDetails(TRANSACTIONS: any) {
     await this.page.locator('input[name="amount"]').fill(TRANSACTIONS.amount);
     await this.page.locator('div[id="paymentMethod"]').click();
     await this.page.locator(`li[data-value="${TRANSACTIONS.paymentMethod}"]`).click();
     await this.page.locator('button.MuiButton-outlinedSecondary').click();
+  }
+
+  async fillTransactionDetailsCrypto(TRANSACTIONS: any) {
+    await this.page.locator('input[name="amount"]').first().fill(TRANSACTIONS.amount);
+    await this.page.locator('div[id="paymentMethod"]').click();
+    await this.page.locator('li[data-value="cash"]').click();
+    await this.page.locator('input[name="amount"]').last().fill(TRANSACTIONS.amountCrypto);
+    await this.page.locator('input[name="cryptoAddress"]').fill(TRANSACTIONS.cryptoAddress);
+    await this.page.locator('button[name="nextButton"]').click();
   }
 
   async fillTransactionDetailsTransfer(TRANSACTIONS: any) {
@@ -78,7 +93,6 @@ export class CreateTransactionPage {
 
   async goToDetailsPage() {
     await this.page.locator('a[href^="/dashboard/transactions/"]:not([href="/dashboard/transactions/"])').click();
-    debugger;
     await this.page.waitForLoadState('networkidle');
   }
 }
