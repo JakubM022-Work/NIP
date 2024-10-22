@@ -50,7 +50,7 @@ const TRANSACTION = {
     descriptionSecond: "handel młotami pneumatycznymi",
     amountCrypto: "10",
     cryptoAddress: "1hDLhcXx3JYKJJFXamD7mcFHFuWzwWmPxNM6Cr",
-    
+    otherType: "pośrednik"
   };
 
   export { ENTITY, TRANSACTION };

@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import { CreateTransactionPage } from '../create-transactions.page';
 import { TRANSACTION } from '../entityData';
+import { selectRandomOptionFromDropdownOtherTransaction } from '../fakeDataGeneration';
 
 const baseUrl = "https://test.systemaml.pl";
 const email = "jakub.marciniak+okazja@inpay.pl";
@@ -93,24 +94,39 @@ test("creating seller crypto transaction positive", async ({ browser }) => {
 
   const createTransactionPage = new CreateTransactionPage(page);
   await createTransactionPage.navigateToCreateTransactionPage(baseUrl);
-  await page.locator('input[value="seller_crypto"]').check();
-  await page.waitForLoadState('networkidle');
-  await page.locator('button[name="nextButton"]').click();
-  await page.locator('input[name="amount"]').first().fill("1000");
-  await page.locator('div[id="paymentMethod"]').click();
-  await page.locator('li[data-value="cash"]').click();
-  await page.locator('input[name="amount"]').last().fill("10");
-  await page.locator('input[name="cryptoAddress"]').fill("1hDLhcXx3JYKJJFXamD7mcFHFuWzwWmPxNM6Cr");
-  await page.locator('button[name="nextButton"]').click();
-  await page.locator('input[name="withoutEntityCode"]').check();
-  await page.waitForLoadState('networkidle');
-  await page.locator('input[name="firstName"]').fill("Jan");
-  await page.locator('input[name="lastName"]').fill("Nowak");
-  await page.locator('input[name="companyName"]').fill("Spółka Jan Nowak");
-  await page.locator('input[name="description"]').fill("handel rzeczami używanymi");
-  await page.locator('button[name="nextButton"]').click();
-  await page.locator('input[name="title"]').fill("Rata za samochód");
-  await page.locator('input[name="description"]').fill("Siódma rata Jan Nowak");
-  await page.locator('button[name="nextButton"]').click();
-  await page.locator('button[name="createNewButton"]').click();
+  await createTransactionPage.selectSellerCrypto();
+  await createTransactionPage.fillTransactionDetailsCrypto(TRANSACTION);
+  await createTransactionPage.fillBuyerInformation(TRANSACTION, { skipOptionalFields: true });
+  await createTransactionPage.fillTitleAndDescription(TRANSACTION);
+  await createTransactionPage.goToDetailsPage();
+});
+
+test("creating exchange fiat transaction positive", async ({ browser }) => {
+  const context = await browser.newContext({
+    storageState: "./auth.json"
+  });
+  const page = await context.newPage();
+
+  const createTransactionPage = new CreateTransactionPage(page);
+  await createTransactionPage.navigateToCreateTransactionPage(baseUrl);
+  await createTransactionPage.selectExchangeFiat();
+  await createTransactionPage.fillTransactionDetailsCrypto(TRANSACTION, { skipOptionalFields: true });
+  await createTransactionPage.fillBuyerInformation(TRANSACTION, { skipOptionalFields: true });
+  await createTransactionPage.fillTitleAndDescription(TRANSACTION);
+  await createTransactionPage.goToDetailsPage();
+});
+
+test("creating other transaction positive", async ({ browser }) => {
+  const context = await browser.newContext({
+    storageState: "./auth.json"
+  });
+  const page = await context.newPage();
+
+  const createTransactionPage = new CreateTransactionPage(page);
+  await createTransactionPage.navigateToCreateTransactionPage(baseUrl);
+  await createTransactionPage.selectOther();
+  await createTransactionPage.fillTransactionDetails(TRANSACTION);
+  await createTransactionPage.fillBuyerInformationOther(TRANSACTION);
+  await createTransactionPage.fillTitleAndDescription(TRANSACTION);
+  await createTransactionPage.goToDetailsPage();
 });
