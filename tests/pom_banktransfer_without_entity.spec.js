@@ -1,9 +1,27 @@
 import { test } from "@playwright/test";
-import { CreateTransactionPage } from "../../pageObjects/create-transaction.page";
-import { TRANSACTION } from "../../testingData/entityData";
-import { BASE_URL } from "../../constants";
+import { CreateTransactionPage } from '../create-transactions.page';
+import { TRANSACTION } from '../entityData';
 
-const baseUrl = BASE_URL;
+const baseUrl = "https://test.systemaml.pl";
+const email = "jakub.marciniak+okazja@inpay.pl";
+const password = "inpay1234";
+
+test.beforeAll(async ({ browser }) => {
+  const context = await browser.newContext();
+  const page = await context.newPage();
+
+  await page.goto(baseUrl);
+
+  await page.getByRole('link', { name: 'Zaloguj' }).click();
+  await page.waitForLoadState('networkidle');
+  await page.locator('input[name="email"]',).fill(email);
+  await page.locator('input[name="password"]',).fill(password);
+  await page.locator('button[type="submit"]').first().click();
+  await page.waitForURL(`${baseUrl}/dashboard/`);
+
+  await context.storageState({ path: 'auth.json' });
+  await page.close();
+});
 
 async function setupPage(browser) {
   const context = await browser.newContext({
