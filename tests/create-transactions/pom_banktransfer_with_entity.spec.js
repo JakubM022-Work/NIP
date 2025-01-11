@@ -1,27 +1,9 @@
 import { test } from '@playwright/test';
-import { CreateTransactionPage } from '../create-transactions.page';
-import { TRANSACTION } from '../entityData';
+import { CreateTransactionPage } from '../../pageObjects/create-transaction.page';
+import { TRANSACTION } from '../../testingData/entityData';
+import { BASE_URL } from '../../constants';
 
-const baseUrl = "https://test.systemaml.pl";
-const email = "jakub.marciniak+okazja@inpay.pl";
-const password = "inpay1234";
-
-test.beforeAll(async ({ browser }) => {
-  const context = await browser.newContext();
-  const page = await context.newPage();
-
-  await page.goto(baseUrl);
-
-  await page.getByRole('link', { name: 'Zaloguj' }).click();
-  await page.waitForLoadState('networkidle');
-  await page.locator('input[name="email"]',).fill(email);
-  await page.locator('input[name="password"]',).fill(password);
-  await page.locator('button[type="submit"]').first().click();
-  await page.waitForURL(`${baseUrl}/dashboard/`);
-
-  await context.storageState({ path: 'auth.json' });
-  await page.close();
-});
+const baseUrl = BASE_URL;
 
 async function setupPage(browser) {
   const context = await browser.newContext({
@@ -36,7 +18,7 @@ async function setupPage(browser) {
 test.describe('Transaction Creation Tests With Entity Payment Method Bank Transfer', () => {
   test('creating purchase transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectBuyer();
+    await createTransactionPage.selectTransactionType('buyer');
     await createTransactionPage.fillTransactionDetailsBank(TRANSACTION);
     await createTransactionPage.fillBuyerInformationBankEntity(TRANSACTION);
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -45,7 +27,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Bank Transf
 
   test('creating sale transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectSeller();
+    await createTransactionPage.selectTransactionType('seller');
     await createTransactionPage.fillTransactionDetailsBank(TRANSACTION);
     await createTransactionPage.fillBuyerInformationBankEntity(TRANSACTION);
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -54,7 +36,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Bank Transf
 
   test('creating transfer transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectTransfer();
+    await createTransactionPage.selectTransactionType('transfer');
     await createTransactionPage.fillTransactionDetailsTransferBank(TRANSACTION);
     await createTransactionPage.fillBuyerInformationBankEntity(TRANSACTION, { skipOptionalFields: true });
     await createTransactionPage.fillSellerInformationEntity(TRANSACTION);
@@ -64,7 +46,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Bank Transf
 
   test('creating buyer crypto transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectBuyerCrypto();
+    await createTransactionPage.selectTransactionType('buyer_crypto');
     await createTransactionPage.fillTransactionDetailsCryptoBank(TRANSACTION);
     await createTransactionPage.fillBuyerInformationBankEntity(TRANSACTION, { skipOptionalFields: true });
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -73,7 +55,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Bank Transf
 
   test('creating seller crypto transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectSellerCrypto();
+    await createTransactionPage.selectTransactionType('seller_crypto');
     await createTransactionPage.fillTransactionDetailsCryptoBank(TRANSACTION);
     await createTransactionPage.fillBuyerInformationBankEntity(TRANSACTION, { skipOptionalFields: true });
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -82,7 +64,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Bank Transf
 
   test('creating exchange fiat transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectExchangeFiat();
+    await createTransactionPage.selectTransactionType('exchange_fiat');
     await createTransactionPage.fillTransactionDetailsCryptoBank(TRANSACTION, { skipOptionalFields: true });
     await createTransactionPage.fillBuyerInformationBankEntity(TRANSACTION, { skipOptionalFields: true });
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -91,7 +73,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Bank Transf
 
   test('creating other transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectOther();
+    await createTransactionPage.selectTransactionType('other');
     await createTransactionPage.fillTransactionDetailsBank(TRANSACTION);
     await createTransactionPage.fillBuyerInformationOtherEntity(TRANSACTION);
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);

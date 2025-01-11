@@ -24,6 +24,7 @@ export class CreateTransactionPage {
   }
 
   async selectRandomOptionFromDropdown(inputSelector: string, dropdownSelector: string, elementIndex: number = 0) {
+    //TODO obsłużyć sytuację gdy nie ma podmiotów
     const inputElement = this.page.locator(inputSelector).nth(elementIndex);
     await inputElement.click();
     await this.page.waitForSelector(dropdownSelector);
@@ -40,6 +41,12 @@ export class CreateTransactionPage {
 
   async selectBuyer() {
     await this.page.locator('input[value="buyer"]').check();
+    await this.page.waitForLoadState('networkidle');
+    await this.page.locator('button[name="nextButton"]').click();
+  }
+
+  async selectTransactionType(type: string) {
+    await this.page.locator(`input[value="${type}"]`).check();
     await this.page.waitForLoadState('networkidle');
     await this.page.locator('button[name="nextButton"]').click();
   }

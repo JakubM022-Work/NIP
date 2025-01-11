@@ -12,6 +12,7 @@ const ENTITY = {
     documentNumber: "TEST 1234",
     documentExpirationDate: "2030-01-01",
     emailAdress: "tester.tester@tester.pl",
+    phoneNumber: "123456789",
 
     companyName: "Firma Testowa",
     companyIdentifier: "TEST1234",
@@ -37,7 +38,9 @@ const ENTITY = {
 
 const TRANSACTION = {
     amount: "1000",
-    paymentMethod: "cash",
+    paymentMethodCash: "cash",
+    paymentMethodBank: "bank_transfer",
+    paymentMethodOther: "other",
     firstName: "Jan",
     lastName: "Nowak",
     companyName: "Spółka Jan Nowak",
@@ -50,7 +53,10 @@ const TRANSACTION = {
     descriptionSecond: "handel młotami pneumatycznymi",
     amountCrypto: "10",
     cryptoAddress: "1hDLhcXx3JYKJJFXamD7mcFHFuWzwWmPxNM6Cr",
-    otherType: "pośrednik"
+    otherType: "pośrednik",
+    iban: "PL24881600014643764383481530",
+    ibanSeller: "PL62124045171366994095847480",
+    paymentMethodOtherType: "monety bulionowe",
   };
 
   export { ENTITY, TRANSACTION };
