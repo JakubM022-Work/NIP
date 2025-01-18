@@ -39,50 +39,8 @@ export class CreateTransactionPage {
     await this.page.locator('button[id="rcc-confirm-button"]').click();
   }
 
-  async selectBuyer() {
-    await this.page.locator('input[value="buyer"]').check();
-    await this.page.waitForLoadState('networkidle');
-    await this.page.locator('button[name="nextButton"]').click();
-  }
-
   async selectTransactionType(type: string) {
     await this.page.locator(`input[value="${type}"]`).check();
-    await this.page.waitForLoadState('networkidle');
-    await this.page.locator('button[name="nextButton"]').click();
-  }
-
-  async selectSeller() {
-    await this.page.locator('input[value="seller"]').check();
-    await this.page.waitForLoadState('networkidle');
-    await this.page.locator('button[name="nextButton"]').click();
-  }
-
-  async selectTransfer() {
-    await this.page.locator('input[value="transfer"]').check();
-    await this.page.waitForLoadState('networkidle');
-    await this.page.locator('button[name="nextButton"]').click();
-  }
-
-  async selectBuyerCrypto() {
-    await this.page.locator('input[value="buyer_crypto"]').check();
-    await this.page.waitForLoadState('networkidle');
-    await this.page.locator('button[name="nextButton"]').click();
-  }
-
-  async selectSellerCrypto() {
-    await this.page.locator('input[value="seller_crypto"]').check();
-    await this.page.waitForLoadState('networkidle');
-    await this.page.locator('button[name="nextButton"]').click();
-  }
-
-  async selectExchangeFiat() {
-    await this.page.locator('input[value="exchange_fiat"]').check();
-    await this.page.waitForLoadState('networkidle');
-    await this.page.locator('button[name="nextButton"]').click();
-  }
-
-  async selectOther() {
-    await this.page.locator('input[value="other"]').check();
     await this.page.waitForLoadState('networkidle');
     await this.page.locator('button[name="nextButton"]').click();
   }

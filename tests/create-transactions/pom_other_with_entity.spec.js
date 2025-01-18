@@ -18,7 +18,7 @@ async function setupPage(browser) {
 test.describe('Transaction Creation Tests With Entity Payment Method Other', () => {
   test('creating purchase transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectBuyer();
+    await createTransactionPage.selectTransactionType('buyer');
     await createTransactionPage.fillTransactionDetailsOther(TRANSACTION);
     await createTransactionPage.fillBuyerInformationEntity();
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -27,7 +27,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Other', () 
 
   test('creating sale transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectSeller();
+    await createTransactionPage.selectTransactionType('seller');
     await createTransactionPage.fillTransactionDetailsOther(TRANSACTION);
     await createTransactionPage.fillBuyerInformationEntity();
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -36,7 +36,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Other', () 
 
   test('creating transfer transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectTransfer();
+    await createTransactionPage.selectTransactionType('transfer');
     await createTransactionPage.fillTransactionDetailsTransferOther(TRANSACTION);
     await createTransactionPage.fillBuyerInformationEntity({ skipOptionalFields: true });
     await createTransactionPage.fillSellerInformationEntity(TRANSACTION, { skipOptionalFields: true });
@@ -46,7 +46,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Other', () 
 
   test('creating buyer crypto transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectBuyerCrypto();
+    await createTransactionPage.selectTransactionType('buyer_crypto');
     await createTransactionPage.fillTransactionDetailsCryptoOther(TRANSACTION);
     await createTransactionPage.fillBuyerInformationEntity({ skipOptionalFields: true });
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -55,7 +55,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Other', () 
 
   test('creating seller crypto transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectSellerCrypto();
+    await createTransactionPage.selectTransactionType('seller_crypto');
     await createTransactionPage.fillTransactionDetailsCryptoOther(TRANSACTION);
     await createTransactionPage.fillBuyerInformationEntity({ skipOptionalFields: true });
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -64,7 +64,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Other', () 
 
   test('creating exchange fiat transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectExchangeFiat();
+    await createTransactionPage.selectTransactionType('exchange_fiat');
     await createTransactionPage.fillTransactionDetailsCryptoOther(TRANSACTION, { skipOptionalFields: true });
     await createTransactionPage.fillBuyerInformationEntity({ skipOptionalFields: true });
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
@@ -73,7 +73,7 @@ test.describe('Transaction Creation Tests With Entity Payment Method Other', () 
 
   test('creating other transaction positive', async ({ browser }) => {
     const createTransactionPage = await setupPage(browser);
-    await createTransactionPage.selectOther();
+    await createTransactionPage.selectTransactionType('other');
     await createTransactionPage.fillTransactionDetailsOther(TRANSACTION);
     await createTransactionPage.fillBuyerInformationOtherEntity(TRANSACTION, { skipOptionalFields: true });
     await createTransactionPage.fillTitleAndDescription(TRANSACTION);
