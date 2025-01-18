@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { CreateTransactionPage } from '../../pageObjects/create-transaction.page';
+import { CreateTransactionPage } from '../../pageObjects/create-transactions.page.ts';
 import { TRANSACTION } from '../../testingData/entityData';
 import { BASE_URL } from '../../constants';
 
