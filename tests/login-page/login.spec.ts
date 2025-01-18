@@ -62,7 +62,7 @@ test.describe("Login Page - dashboard redirect without localStorage", () => {
     await loginPage.goToPage(`${baseURL}/dashboard/`);
     let newPageURL = await loginPage.getPageUrl();
     expect(newPageURL).toBe(`${baseURL}/user/login/`);
-    expect(loginPage.isLocatorVisible("#login-general-error")).toBeTruthy();
+    expect(await loginPage.isLocatorVisible("#login-general-error")).toBeTruthy();
   });
 });
 
