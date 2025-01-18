@@ -1,0 +1,43 @@
+{
+    "cookies": [
+      {
+        "name": "XSRF-TOKEN",
+        "value": "eyJpdiI6IkZOWnVZam4wTGxHb1dqSm9OTk9YZz09IiwidmFsdWUiOiJUbDd6TkNDUFp0VjJ2cklUd2tyQUlCM3lzODhtTnlDQnJYQUxydkdoZGh5Q1h1YjR4anB6cDJFZmhzT1owRjFaaUJCRFZXY1BkVXZ2TXFnbjBQYlZFeDlLa3VjbXp3bnZ5bVFzS0hrNjU5UVBaVE5kTFpHd0t2UjlCZEwiLCJtYWMiOiI2NzY3Mzg0YWIxYTYyNDJlZjMxMWQ2ZjM4MDlkZjliZjgyZDU3ZTczNGRkMTEwMGFkNTBhOWU4ZTViYTY3NjZhIiwidGFnIjoiIn0%3D",
+        "domain": "apitest.systemaml.pl",
+        "path": "/",
+        "expires": 1729863100,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "systemaml_session",
+        "value": "eyJpdiI6IkNobVdNbkV5Q3U0OWk4ZkZrUmhWZz09IiwidmFsdWUiOiJPbllhbTVqM2xoQlFqOTZFb2JibW1qL2JFTU9YekhaU1ZoU0N2U3YwM3FaaDZqaFZQczBsTmdZb1JGVFdxaWxSRVhuUFBuZHRPTzBaVEFBTEZkLzI5YWVNY2h2UXpqMGl3WW4vZ1R3YkhFY25WbXNiM3VQbmE2RFdBQ2siLCJtYWMiOiI4MjVhNjFkNDY2MWVmYjFhYjU1OWZhY2FlOWFkNTZlMzg2YjM4ZjEyNzNiY2YzN2QxZjFiNjJjMDI5ZjkwMWEiLCJ0YWciOiIifQ%3D%3D",
+        "domain": "apitest.systemaml.pl",
+        "path": "/",
+        "expires": 1729863100,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "None"
+      }
+    ],
+    "origins": [
+      {
+        "origin": "https://test.systemaml.pl",
+        "localStorage": [
+          {
+            "name": "authToken",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTIzNDU2Nzg5MGFiY2RlZjEyMzQ1Njc4OWFiY2RlZmdoaWp6a2xtbm9wcXJzdHV2dzEyMzQ1NiIsImlhdCI6MTIzNDU2Nzg5MC4xMjM0NTYsIm5iZiI6MTIzNDU2Nzg5MC4xMjM0NTcsImV4cCI6MTIzNDU2Nzg5MC4xMjM0NTgsInN1YiI6IjEyIiwic2NvcGVzIjpbImRldmVsb3BlciJdfQ.sXmT9FkOhjI1QwOawf5hLnNcbC1xQTM9b1K4ZAGIF2kElKfvZB6BmWqgWdBz4VnxEeKnhy5VDo-V6c5cNrsS9AbEK7jqEIB2I-SH_8OypNXHV-MqLmd8GFpr0p9Mhojhf8UoaIS50avTYaKplH9XbH0n1-b-u3qluoyK7MqqlXwlLaIJoYIhT_KMb8o_gmW8l9Do9gRP57Al8cB19yqPf2D3BgCF7J4GIzB1UtivLkcH7mFUwJJf7wQAc7eYsaf4ZxlaMGFsLhG0JlT_6YnvAnEz1OFAxn4kl9mRBujE_b5i2BZkHsFTlNaazZxsLhMJ6v5AewHc5yRpZbPfC7vTtaOWzBGPH43aGLPsjwh2wA-Ejz9NRI1sNsLflLbOhcGXsEN2H9sLgMx3At9n3gQUv12RyEU3KP8RLpwbznF7wJD-mUbpFhT9GM4c7k3jGI5MG7YW92sEyFN_jpq7eOcZT12ryQ2GSnTc9KWYXeoWXZ63ocXMjxtX1AiY9KMC-xGn2THbG9WB_1HcgE0lP4-tn1CJz_u3-xCpQ2y3xgVo9SKcTpR92yzl2yB3nL6mgvE2lJwTm8HiM3ztFXk2DdVta9RU1ou7Jf1wDbmWFevC8FBBopXTxgwiR7RmGgGFkNQiRVK8KXbpFKBdf0gXSFkSKvpu5sNzg5koXU"
+          },
+          {
+            "name": "refreshToken",
+            "value": "def50200a7b1837c502349874a1ef352d84c1072f4c6b7a3edfd8d24ac8c3a19dd5f3c28a3c3b7c6bb4e9d9b5a6e4f7c215f6a38a17bfeb3cdd0a429847e6e01d42983f5aef604f78d6e8cda084e8fc913f28b1632bfa2d0b1c3f93d768b9a4e57c3d94e72849c0a0c6d8e9f12cb473f929f6836d1b45f1f0a051f992a7a43b94c106cba275f1ef13d419324c31abace57f611db2e90f7c3ac4b3a9634af6fa45e234b28395fab3ab3bc921e40d9c62a93af85cdc94f0b82d55b130b2e50c12b81503606a4cffb1ce1423c3f7949ab59ec187974c5f273768e5f0712e06e1d6d9b8172be9482af5537d95c7e8a4f1e2d3e3d1d679d7cb5f6d5a5b6f0dff7a1175c0d0733716ff7bf3347ac44bb315c8af0974735b8efeaba3e489c8d8cfb829192062f26e5e5dbcf08e53c85e8d17fb6c8b16e13e46e7d83f4e02dc58ac39bf98d93c5b8c4a9739308e81d6bfb6481de2ddecfc4b2d43d574d630a8d45f0672f129542f7d79c1"
+          },
+          {
+            "name": "i18nextLng",
+            "value": "en-US"
+          }
+        ]
+      }
+    ]
+  }
