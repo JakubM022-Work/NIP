@@ -12,7 +12,6 @@ test.beforeAll(async ({ browser }) => {
   const page = await context.newPage();
 
   await page.goto(baseUrl);
-  console.log(baseUrl);
 
   await page.getByRole("link", { name: "Zaloguj" }).click();
   await page.waitForLoadState("networkidle");
